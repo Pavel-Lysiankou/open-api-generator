@@ -1,5 +1,5 @@
 {
-    "name": "open-api-generator",
+    "name": "pavel-lysiankou/open-api-generator",
     "type": "symfony-bundle",
     "description": "Bundle provides possibility to generate Open API documentation",
     "require": {
@@ -12,12 +12,12 @@
     },
     "autoload": {
         "psr-4": {
-            "OpenApiGenerator\\": "src/"
+            "PavelLysiankou\\OpenApiGenerator\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "OpenApiGenerator\\Tests\\": "tests/"
+            "PavelLysiankou\\OpenApiGenerator\\Tests\\": "tests/"
         }
     },
     "scripts": {
