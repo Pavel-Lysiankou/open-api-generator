@@ -4,7 +4,7 @@
     "description": "Bundle provides possibility to generate Open API documentation",
     "require": {
         "php": ">=8.1",
-        "symfony/framework-bundle": "6.2.*"
+        "symfony/framework-bundle": "^6.1"
     },
     "require-dev": {
     },
