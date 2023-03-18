@@ -1,5 +1,5 @@
 {
-    "name": "Pavel-Lysiankou/open-api-generator",
+    "name": "open-api-generator",
     "type": "symfony-bundle",
     "description": "Bundle provides possibility to generate Open API documentation",
     "require": {
