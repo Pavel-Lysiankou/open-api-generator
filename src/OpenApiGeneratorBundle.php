@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace OpenApiGenerator;
 
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
