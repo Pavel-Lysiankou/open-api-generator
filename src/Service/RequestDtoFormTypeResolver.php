@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace PavelLysiankou\OpenApiGenerator\Service;
 
-use Symfony\Component\Form\FormInterface;
-
 class RequestDtoFormTypeResolver
 {
     public function __construct(
@@ -13,7 +11,7 @@ class RequestDtoFormTypeResolver
     ) {
     }
 
-    public function resolve(string $dtoClass): FormInterface
+    public function resolve(string $dtoClass): string
     {
         return $this->formTypes[$dtoClass];
     }
