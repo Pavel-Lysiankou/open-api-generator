@@ -8,10 +8,10 @@ use Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
-class ValidationException extends Exception
+class RequestDtoValidationException extends Exception
 {
     private const STATUS_CODE = Response::HTTP_BAD_REQUEST;
-    private const MESSAGE = 'Validation failed';
+    private const MESSAGE = 'Request dto validation failed';
 
     public function __construct(private readonly ConstraintViolationListInterface $errors)
     {

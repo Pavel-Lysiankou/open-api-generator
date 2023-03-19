@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PavelLysiankou\OpenApiGenerator\ArgumentResolver;
 
 use PavelLysiankou\OpenApiGenerator\Dto\RequestDtoInterface;
-use PavelLysiankou\OpenApiGenerator\Exception\ValidationException;
+use PavelLysiankou\OpenApiGenerator\Exception\RequestDtoValidationException;
 use PavelLysiankou\OpenApiGenerator\Service\RequestDtoFormTypeResolver;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +32,7 @@ class RequestDTOResolver implements ArgumentValueResolverInterface
     /**
      * @return iterable<RequestDtoInterface>
      *
-     * @throws ValidationException
+     * @throws RequestDtoValidationException
      */
     public function resolve(Request $request, ArgumentMetadata $argument): iterable
     {
@@ -47,7 +47,7 @@ class RequestDTOResolver implements ArgumentValueResolverInterface
         $errors = $this->validator->validate($requestDto);
 
         if ($errors->count() > 0) {
-            throw new ValidationException($errors);
+            throw new RequestDtoValidationException($errors);
         }
 
         yield $requestDto;

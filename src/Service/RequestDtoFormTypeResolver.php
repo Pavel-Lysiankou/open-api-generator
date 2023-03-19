@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PavelLysiankou\OpenApiGenerator\Service;
 
+use PavelLysiankou\OpenApiGenerator\Exception\RequestDtoFormTypeNotFoundException;
+
 class RequestDtoFormTypeResolver
 {
     public function __construct(
@@ -13,6 +15,10 @@ class RequestDtoFormTypeResolver
 
     public function resolve(string $dtoClass): string
     {
-        return $this->formTypes[$dtoClass];
+        if (isset($this->formTypes[$dtoClass])) {
+            $this->formTypes[$dtoClass];
+        }
+
+        throw new RequestDtoFormTypeNotFoundException();
     }
 }
