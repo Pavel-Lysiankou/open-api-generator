@@ -10,7 +10,7 @@
     },
     "config": {
     },
-    "autoload": {]
+    "autoload": {
         "psr-4": {
             "PavelLysiankou\\OpenApiGenerator\\": "src/"
         }
