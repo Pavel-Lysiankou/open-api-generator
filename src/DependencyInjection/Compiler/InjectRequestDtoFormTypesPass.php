@@ -20,6 +20,6 @@ class InjectRequestDtoFormTypesPass implements CompilerPassInterface
         }
 
         $definition = $container->getDefinition(RequestDtoFormTypeResolver::class);
-        $definition->setArgument('formTypes', $formTypes);
+        $definition->setArgument('$formTypes', $formTypes);
     }
 }
