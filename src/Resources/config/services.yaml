@@ -1,0 +1,15 @@
+services:
+    _instanceof:
+        PavelLysiankou\OpenApiGenerator\Form\Type\RequestDtoTypeInterface:
+            tags: ['open_api_generator.request_dto_type']
+
+    PavelLysiankou\OpenApiGenerator\Service\RequestDtoTypeFactory:
+        arguments:
+            $types: !tagged_iterator open_api_generator.request_dto_type
+
+    PavelLysiankou\OpenApiGenerator\ArgumentResolver\RequestDTOResolver:
+        arguments:
+            $requestDtoTypeFactory: '@PavelLysiankou\OpenApiGenerator\Service\RequestDtoTypeFactory'
+            $validator: '@validator'
+        tags:
+            - { name: 'controller.argument_value_resolver', default_index_method: 'getDtoClass' }
