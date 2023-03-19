@@ -1,7 +1,5 @@
 services:
-    PavelLysiankou\OpenApiGenerator\Service\RequestDtoTypeFactory:
-        arguments:
-            $types: !tagged_iterator open_api_generator.request_dto_type
+    PavelLysiankou\OpenApiGenerator\Service\RequestDtoFormTypeResolver:
 
     PavelLysiankou\OpenApiGenerator\ArgumentResolver\RequestDTOResolver:
         arguments:

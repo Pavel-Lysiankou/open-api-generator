@@ -6,15 +6,15 @@ namespace PavelLysiankou\OpenApiGenerator\Service;
 
 use Symfony\Component\Form\FormInterface;
 
-class RequestDtoTypeFactory
+class RequestDtoFormTypeResolver
 {
     public function __construct(
-        private readonly iterable $types
+        private readonly iterable $formTypes
     ) {
     }
 
     public function getType(string $dtoClass): FormInterface
     {
-        return $this->types[$dtoClass];
+        return $this->formTypes[$dtoClass];
     }
 }
