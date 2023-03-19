@@ -13,7 +13,7 @@ class RequestDtoFormTypeResolver
     ) {
     }
 
-    public function getType(string $dtoClass): FormInterface
+    public function resolve(string $dtoClass): FormInterface
     {
         return $this->formTypes[$dtoClass];
     }

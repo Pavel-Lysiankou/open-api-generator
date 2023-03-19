@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PavelLysiankou\OpenApiGenerator\DependencyInjection;
 
+use PavelLysiankou\OpenApiGenerator\DependencyInjection\Compiler\InjectRequestDtoFormTypesPass;
 use PavelLysiankou\OpenApiGenerator\Form\Type\RequestDtoFormTypeInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -16,7 +17,7 @@ class OpenApiGeneratorExtension extends Extension
     {
         $container
             ->registerForAutoconfiguration(RequestDtoFormTypeInterface::class)
-            ->addTag('open_api_generator.request_dto_type');
+            ->addTag(InjectRequestDtoFormTypesPass::REQUEST_DTO_FORM_TYPE_TAG);
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');

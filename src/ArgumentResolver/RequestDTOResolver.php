@@ -6,20 +6,19 @@ namespace PavelLysiankou\OpenApiGenerator\ArgumentResolver;
 
 use PavelLysiankou\OpenApiGenerator\Dto\RequestDtoInterface;
 use PavelLysiankou\OpenApiGenerator\Exception\ValidationException;
-use PavelLysiankou\OpenApiGenerator\Service\RequestDtoTypeFactory;
-use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
+use PavelLysiankou\OpenApiGenerator\Service\RequestDtoFormTypeResolver;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-
-#[AutoconfigureTag('controller.argument_value_resolver')]
 class RequestDTOResolver implements ArgumentValueResolverInterface
 {
     public function __construct(
-        private readonly RequestDtoTypeFactory $requestDtoTypeFactory,
-        private readonly ValidatorInterface $validator
+        private readonly FormBuilderInterface       $formBuilder,
+        private readonly RequestDtoFormTypeResolver $requestDtoFormTypeResolver,
+        private readonly ValidatorInterface         $validator
     ) {
     }
 
@@ -38,9 +37,10 @@ class RequestDTOResolver implements ArgumentValueResolverInterface
     public function resolve(Request $request, ArgumentMetadata $argument): iterable
     {
         $dtoClass = $argument->getType();
+        $formType = $this->requestDtoFormTypeResolver->resolve($dtoClass);
 
-        $requestDto = $this->requestDtoTypeFactory
-            ->getType($dtoClass)
+        $requestDto = $this->formBuilder
+            ->create($formType)
             ->handleRequest($request)
             ->getData();
 

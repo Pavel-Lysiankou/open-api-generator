@@ -2,8 +2,5 @@ services:
     PavelLysiankou\OpenApiGenerator\Service\RequestDtoFormTypeResolver:
 
     PavelLysiankou\OpenApiGenerator\ArgumentResolver\RequestDTOResolver:
-        arguments:
-            $requestDtoTypeFactory: '@PavelLysiankou\OpenApiGenerator\Service\RequestDtoTypeFactory'
-            $validator: '@validator'
-        tags:
-            - { name: 'controller.argument_value_resolver', default_index_method: 'getDtoClass' }
+        autowire: true
+        autoconfigure: true
